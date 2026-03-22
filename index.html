@@ -14,34 +14,30 @@
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
-    <nav class="sticky top-0 z-50 glass border-b border-slate-100 px-8 py-4 flex justify-between items-center">
+    <nav class="sticky top-0 z-50 glass border-b border-slate-100 px-8 py-4 flex justify-between items-center text-slate-800">
         <div class="flex items-center gap-2">
             <div class="w-8 h-8 grad-primary rounded-lg flex items-center justify-center text-white font-bold text-xl italic">B</div>
             <span class="text-xl font-extrabold text-slate-800 tracking-tight">BioGen<span class="text-indigo-600">.ai</span></span>
         </div>
         <div id="model-badge" class="text-[10px] bg-indigo-50 text-indigo-500 px-3 py-1.5 rounded-full font-bold border border-indigo-100 uppercase tracking-wider animate-pulse">
-            SİSTEM ANALİZ EDİLİYOR...
+            SİSTEM HAZIRLANIYOR...
         </div>
     </nav>
 
     <main class="flex-grow max-w-6xl mx-auto px-6 py-12 w-full">
         <div class="text-center mb-16">
             <h1 class="text-5xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-none">Profilini <span class="text-transparent bg-clip-text grad-primary">Yapay Zeka</span> İle Güçlendir.</h1>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">Kariyer notlarını saniyeler içinde etkileyici ve profesyonel bir LinkedIn özetine dönüştür.</p>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto font-medium text-slate-600">Kariyer notlarını saniyeler içinde etkileyici bir LinkedIn özetine dönüştür.</p>
         </div>
 
         <div class="grid lg:grid-cols-2 gap-8 items-start">
             <div class="bg-white rounded-[2.5rem] p-8 card-shadow border border-slate-100">
                 <div class="flex gap-2 mb-6">
-                    <button onclick="setExample('Bilgisayar mühendisliği öğrencisiyim. Veri bilimi ve yapay zekayla ilgileniyorum. Python ve SQL biliyorum.')" class="text-[10px] bg-slate-100 hover:bg-indigo-100 text-slate-600 px-3 py-1.5 rounded-full transition-all">Örnek 1</button>
-                    <button onclick="setExample('Dijital pazarlama uzmanıyım. Stratejik planlama ve içerik yönetimi konusunda 3 yıl deneyimim var.')" class="text-[10px] bg-slate-100 hover:bg-indigo-100 text-slate-600 px-3 py-1.5 rounded-full transition-all">Örnek 2</button>
+                    <button onclick="setExample('Bilgisayar mühendisliği öğrencisiyim. Veri bilimi ve yapay zekayla ilgileniyorum. Python ve SQL biliyorum.')" class="text-[10px] bg-slate-100 hover:bg-indigo-100 text-slate-600 px-3 py-1.5 rounded-full transition-all font-bold uppercase">Öğrenci Örneği</button>
+                    <button onclick="setExample('Dijital pazarlama uzmanıyım. Stratejik planlama ve içerik yönetimi konusunda 3 yıl deneyimim var.')" class="text-[10px] bg-slate-100 hover:bg-indigo-100 text-slate-600 px-3 py-1.5 rounded-full transition-all font-bold uppercase">Uzman Örneği</button>
                 </div>
-                
-                <textarea id="userInput" class="w-full h-64 p-6 rounded-2xl border-none focus:ring-2 focus:ring-indigo-500 outline-none bg-slate-50 text-slate-700 text-lg placeholder:text-slate-400 mb-6 resize-none" placeholder="Yeteneklerini, deneyimlerini veya eğitimini buraya özgürce karala..."></textarea>
-                
-                <button onclick="generate()" id="btn" class="w-full grad-primary text-white font-bold py-5 rounded-[1.5rem] shadow-xl shadow-indigo-200 hover:scale-[1.02] active:scale-[0.98] transition-all text-lg tracking-wide uppercase">
-                    PROFİLİMİ OLUŞTUR
-                </button>
+                <textarea id="userInput" class="w-full h-64 p-6 rounded-2xl border-none focus:ring-2 focus:ring-indigo-500 outline-none bg-slate-50 text-slate-700 text-lg placeholder:text-slate-400 mb-6 resize-none" placeholder="Yeteneklerini buraya karala..."></textarea>
+                <button onclick="generate()" id="btn" class="w-full grad-primary text-white font-bold py-5 rounded-[1.5rem] shadow-xl shadow-indigo-200 hover:scale-[1.02] active:scale-[0.98] transition-all text-lg tracking-wide uppercase">PROFİLİMİ OLUŞTUR</button>
             </div>
 
             <div class="bg-slate-900 rounded-[2.5rem] p-8 shadow-2xl relative min-h-[500px] flex flex-col">
@@ -53,11 +49,7 @@
                     </div>
                     <button onclick="copyToClipboard()" class="text-[10px] font-bold text-slate-500 hover:text-indigo-400 tracking-widest uppercase transition-colors">KOPYALA</button>
                 </div>
-                
-                <div id="output" class="text-slate-300 leading-relaxed text-lg italic opacity-40 font-light whitespace-pre-wrap">
-                    Yapay zeka motoru hazır. Giriş bekleniyor...
-                </div>
-
+                <div id="output" class="text-slate-300 leading-relaxed text-lg italic opacity-40 font-light whitespace-pre-wrap">Yapay zeka motoru hazır. Giriş bekleniyor...</div>
                 <div id="loader" class="hidden absolute inset-0 bg-slate-900/95 rounded-[2.5rem] flex flex-col items-center justify-center text-center p-8">
                     <div class="w-16 h-16 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin mb-6"></div>
                     <p class="text-indigo-400 text-xs font-black tracking-[0.4em] uppercase">AI ANALİZ EDİYOR</p>
@@ -67,42 +59,58 @@
     </main>
 
     <footer class="mt-auto py-12 px-8 border-t border-slate-100 text-center">
-        <p class="text-slate-400 text-sm font-medium">© 2026 BioGen.ai • Aylin Elif Gökdemir tarafından geliştirildi.</p>
+        <p class="text-slate-400 text-sm font-medium italic">© 2026 BioGen.ai • Aylin Elif Gökdemir tarafından geliştirildi.</p>
     </footer>
 
     <script>
-        const KEY = "AIzaSyAy3eK9nKDCMe7FoybrNLoAw9mmFzKpf9M";
-        let activeModel = null;
+        /**
+         * 🛡️ GÜVENLİK NOTU (SECURITY NOTICE):
+         * API anahtarı botlar tarafından iptal edilmemesi ve kötüye kullanımın önlenmesi için 
+         * GitHub üzerinde gizlenmiştir. Uygulama canlı ortamda (Netlify) manuel deploy 
+         * ve environment variables mantığı ile çalışmaktadır.
+         */
+        const KEY = "HIDDEN_FOR_SECURITY_REASONS"; // Canlı ortamda gerçek anahtar kullanılmaktadır.
+        
+        let activeModel = "models/gemini-1.5-flash"; // Varsayılan model
 
-        // Hesabındaki en uygun modeli otomatik bulur
         async function findBestModel() {
+            if(KEY.includes("HIDDEN")) {
+                document.getElementById('model-badge').innerText = "GÜVENLİ MOD: AKTİF";
+                return;
+            }
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${KEY}`);
                 const data = await res.json();
                 const best = data.models.find(m => m.supportedGenerationMethods.includes("generateContent"));
                 if (best) {
                     activeModel = best.name;
-                    const badge = document.getElementById('model-badge');
-                    badge.innerText = "AKTİF: " + best.displayName;
-                    badge.classList.remove('animate-pulse', 'bg-indigo-50', 'text-indigo-500');
-                    badge.classList.add('bg-emerald-50', 'text-emerald-600', 'border-emerald-100');
+                    updateBadge("AKTİF: " + best.displayName.split('/')[1]);
                 }
-            } catch (e) { console.error("Model Error", e); }
+            } catch (e) { updateBadge("BAĞLANTI BEKLENİYOR"); }
         }
+
+        function updateBadge(text) {
+            const badge = document.getElementById('model-badge');
+            badge.innerText = text;
+            badge.classList.remove('animate-pulse', 'bg-indigo-50', 'text-indigo-500');
+            badge.classList.add('bg-emerald-50', 'text-emerald-600', 'border-emerald-100');
+        }
+
         findBestModel();
 
-        function setExample(text) {
-            document.getElementById('userInput').value = text;
-        }
+        function setExample(text) { document.getElementById('userInput').value = text; }
 
         async function generate() {
             const input = document.getElementById('userInput').value;
             const output = document.getElementById('output');
             const loader = document.getElementById('loader');
             
-            if(!input.trim()) return alert("Lütfen bir şeyler yazın!");
-            if(!activeModel) return alert("Sistem henüz hazır değil.");
+            if(KEY.includes("HIDDEN")) {
+                alert("GitHub sürümünde güvenlik nedeniyle anahtar gizlenmiştir. Lütfen projenin canlı (Netlify) linkini kontrol ediniz.");
+                return;
+            }
 
+            if(!input.trim()) return alert("Lütfen bir şeyler yazın!");
             loader.classList.remove('hidden');
             output.innerText = "";
 
@@ -110,22 +118,20 @@
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/${activeModel}:generateContent?key=${KEY}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ contents: [{ parts: [{ text: `Profesyonel bir kariyer danışmanı gibi davran. Şu notlarla etkileyici bir LinkedIn özet yazısı oluştur: ${input}` }] }] })
+                    body: JSON.stringify({ contents: [{ parts: [{ text: `Profesyonel bir LinkedIn özet yazısı oluştur: ${input}` }] }] })
                 });
-                
                 const data = await res.json();
                 output.innerText = data.candidates[0].content.parts[0].text;
                 output.classList.remove('italic', 'opacity-40');
-            } catch (err) { 
-                output.innerText = "Bağlantı sorunu oluştu, lütfen tekrar deneyin."; 
-            } finally { loader.classList.add('hidden'); }
+            } catch (err) { output.innerText = "Hata oluştu. Canlı linki deneyiniz."; }
+            finally { loader.classList.add('hidden'); }
         }
 
         function copyToClipboard() {
             const text = document.getElementById('output').innerText;
             if(!text || text.includes("hazır")) return;
             navigator.clipboard.writeText(text);
-            alert("Metin kopyalandı!");
+            alert("Metin kopyalandı! 🔥");
         }
     </script>
 </body>
